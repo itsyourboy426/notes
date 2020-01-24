@@ -1,0 +1,44 @@
+<ion-app>
+    <ion-button color="primary">primary</ion-button>
+    <ion-button color="success">success</ion-button>
+    <ion-button color="danger">danger</ion-button>
+    <ion-button color="warning">warning</ion-button>
+    <ion-button color="light">light</ion-button>
+    <ion-button color="medium">medium</ion-button>
+    <ion-button fill="outline" color="dark">dark</ion-button>
+    
+    <ion-button expand="full">full</ion-button>
+    <ion-button expand="block">block</ion-button>
+    <ion-button expand="block" fill="outline">block</ion-button>
+    <ion-button><ion-icon slot="start" name="star"></ion-icon></ion-button>
+    <ion-button><ion-icon slot="start" name="star"></ion-icon></ion-button>
+</ion-app>
+
+<ion-app>
+    <ion-header>
+        <ion-toolbar>   // color="primary"
+    <ion-title>Registration Form</ion-title>
+        </ion-toolbar>
+    </ion-header>
+</ion-app>
+
+<ion-app>
+    <ion-header>
+        <ion-toolbar color="primary">
+        <ion-title>Registration Form</ion-title>
+        </ion-toolbar>
+        </ion-header>
+    <ion-content>
+        <form>
+        <ion-item>
+        <ion-label>User Name:<ion-text color="danger"></ion-text></ion-label>
+            <ion-input type="text" required></ion-input>
+        </ion-item>
+        <ion-item>
+        <ion-label>Password:<ion-text color="danger"></ion-text></ion-label>
+            <ion-input type="text" required></ion-input>
+        </ion-item>
+            <ion-button name="" style="text-align: center">Login</ion-button>
+        </form>
+    </ion-content>
+</ion-app>
