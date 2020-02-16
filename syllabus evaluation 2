@@ -1,0 +1,84 @@
+page.xaml file:-
+
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="testapp.testpage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="this is test app" FontSize="Large" TextColor="Red"></Label>
+            <Label Text="enter first number"></Label>
+            <Entry x:Name="inputtext" Placeholder="first"></Entry>
+            <Label Text="enter second number"></Label>
+            <Entry x:Name="inputtext2" Placeholder="second"></Entry>
+            <Button Text="submit" Clicked="btnclick"></Button>
+            <Label x:Name="result" ></Label>
+            <Stepper x:Name="ste" Minimum="1" Maximum="100" ValueChanged="stepperfun"></Stepper>
+            <Label x:Name="range" Text="1"></Label>
+            <BoxView x:Name="boxcol" Color="Red"></BoxView>
+            <Slider x:Name="myslider" Minimum="0" Maximum="10"  ValueChanged="sliderfun"></Slider>
+            <Label x:Name="mysliderlabel" Text="0" HorizontalOptions="Center"></Label>
+            <DatePicker x:Name="dp" MaximumDate="2025/12/31" MinimumDate="2017/1/1" Format="yyyy/mm/dd"></DatePicker>
+            <TimePicker x:Name="tp"></TimePicker>
+            <Button Text="submit" Clicked="datetimeshow"></Button>
+            <Label x:Name="dt"></Label>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
+
+page.xaml.cs file:-
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+
+namespace testapp
+{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class testpage : ContentPage
+    {
+        public testpage()
+        {
+            InitializeComponent();
+        }
+        void btnclick(object sender, EventArgs e)
+        {
+            int num1 = int.Parse(inputtext.Text);
+            int num2 = int.Parse(inputtext2.Text);
+            int sum = num1 + num2;
+            result.Text= ("sum of two numbers is : "+sum);
+        } 
+        void stepperfun(object sender, ValueChangedEventArgs e)
+        {
+            range.Text = ste.Value.ToString();
+        }
+        void sliderfun(object sender, ValueChangedEventArgs e)
+        {
+            //double val = double.Parse(myslider.Value.ToString());
+            var val = myslider.Value;
+            if (val > 2)
+            {
+                boxcol.Color = Color.Yellow;
+            }
+            else
+            {
+                boxcol.Color = Color.Red;
+            }
+            mysliderlabel.Text = myslider.Value.ToString();
+        }
+        void datetimeshow(object sender, EventArgs f)
+        {
+            var d = dp.Date;
+            var t = tp.Time;
+            dt.Text = string.Format("date is "+d+"\n time is "+t+"");
+        }
+    }
+}
