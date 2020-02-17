@@ -1,0 +1,255 @@
+1. First Program
+designing page:-
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="testapp.testpage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="this is test app" FontSize="Large" TextColor="Red"></Label>
+            <Label Text="enter first number"></Label>
+            <Entry x:Name="inputtext" Placeholder="first"></Entry>
+            <Label Text="enter second number"></Label>
+            <Entry x:Name="inputtext2" Placeholder="second"></Entry>
+            <Button Text="submit" Clicked="btnclick"></Button>
+            <Label x:Name="result" ></Label>
+            <Stepper x:Name="ste" Minimum="1" Maximum="100" ValueChanged="stepperfun"></Stepper>
+            <Label x:Name="range" Text="1"></Label>
+            <BoxView x:Name="boxcol" Color="Red"></BoxView>
+            <Slider x:Name="myslider" Minimum="0" Maximum="10"  ValueChanged="sliderfun"></Slider>
+            <Label x:Name="mysliderlabel" Text="0" HorizontalOptions="Center"></Label>
+            <DatePicker x:Name="dp" MaximumDate="2025/12/31" MinimumDate="2017/1/1" Format="yyyy/mm/dd"></DatePicker>
+            <TimePicker x:Name="tp"></TimePicker>
+            <Button Text="submit" Clicked="datetimeshow"></Button>
+            <Label x:Name="dt"></Label>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
+
+coding page:-
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+
+namespace testapp
+{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class testpage : ContentPage
+    {
+        public testpage()
+        {
+            InitializeComponent();
+        }
+        void btnclick(object sender, EventArgs e)
+        {
+            int num1 = int.Parse(inputtext.Text);
+            int num2 = int.Parse(inputtext2.Text);
+            int sum = num1 + num2;
+            result.Text= ("sum of two numbers is : "+sum);
+        } 
+        void stepperfun(object sender, ValueChangedEventArgs e)
+        {
+            range.Text = ste.Value.ToString();
+        }
+        void sliderfun(object sender, ValueChangedEventArgs e)
+        {
+            //double val = double.Parse(myslider.Value.ToString());
+            var val = myslider.Value;
+            if (val > 2)
+            {
+                boxcol.Color = Color.Yellow;
+            }
+            else
+            {
+                boxcol.Color = Color.Red;
+            }
+            mysliderlabel.Text = myslider.Value.ToString();
+        }
+        void datetimeshow(object sender, EventArgs f)
+        {
+            var d = dp.Date;
+            var t = tp.Time;
+            dt.Text = string.Format("date is "+d+"\n time is "+t+"");
+        }
+    }
+}
+
+
+2. Second Program
+designing page:-
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="testapp.itemoffer">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="item price" FontSize="Large"></Label>
+            <Label Text="Enter First Item"></Label>
+            <Slider x:Name="slide1" Minimum="0" Maximum="20000" ValueChanged="Slide_ValueChanged1"></Slider>
+            <Label x:Name="print1"></Label>
+            <Label Text="enter second item"></Label>
+            <Slider x:Name="slide2" Minimum="0" Maximum="20000" ValueChanged="Slide_ValueChanged2"></Slider>
+            <Label x:Name="print2"></Label>
+            <Label Text="enter third item"></Label>
+            <Slider x:Name="slide3" Minimum="0" Maximum="20000" ValueChanged="Slide_ValueChanged3"></Slider>
+            <Label x:Name="print3"></Label>
+            <Button Text="submit" Clicked="Button_Clicked"></Button>
+            <Label x:Name="alertprint" HorizontalOptions="Center" VerticalOptions="Center"></Label>
+            
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
+
+coding page:-
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+
+namespace testapp
+{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class itemoffer : ContentPage
+    {
+        public itemoffer()
+        {
+            InitializeComponent();
+        }
+        void Slide_ValueChanged1(object sender, ValueChangedEventArgs e)
+        {
+    
+            print1.Text = slide1.Value.ToString();
+        }
+        void Slide_ValueChanged2(object sender, ValueChangedEventArgs e)
+        {
+
+            print2.Text = slide2.Value.ToString();
+        }
+        void Slide_ValueChanged3(object sender, ValueChangedEventArgs e)
+        {
+
+            print3.Text = slide3.Value.ToString();
+        }
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            var num1 = slide1.Value;
+            var num2 = slide2.Value;
+            var num3 = slide3.Value;
+            if (num1 < 1000)
+            {
+                alertprint.Text = "you got a offer with Item one!";
+            }
+            else if (num2 < 1000)
+            {
+                alertprint.Text = "you got a offer with Item two!";
+            }
+            else
+            {
+                alertprint.Text = "you got a offer with Item three!";
+            }
+
+        }    
+    }
+}
+
+
+3. Third Program
+designing page:-
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="testapp.agesystem">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Age System"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            <Label Text="age of first sibling:"></Label>
+            <Stepper x:Name="ste1" Minimum="1" Maximum="100" ValueChanged="stepperfun1"></Stepper>
+            <Label x:Name="show1"></Label>
+            <Label Text="age of first sibling:"></Label>
+            <Stepper x:Name="ste2" Minimum="1" Maximum="100" ValueChanged="stepperfun2"></Stepper>
+            <Label x:Name="show2"></Label>
+            <Label Text="age of first sibling:"></Label>
+            <Stepper x:Name="ste3" Minimum="1" Maximum="100" ValueChanged="stepperfun3"></Stepper>
+            <Label x:Name="show3"></Label>
+            <Button Text="submit" Clicked="btnclick"></Button>
+            <Label x:Name="showres"></Label>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
+
+coding page:-
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+
+namespace testapp
+{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class agesystem : ContentPage
+    {
+        public agesystem()
+        {
+            InitializeComponent();
+        }
+        void stepperfun1(object sender, ValueChangedEventArgs e)
+        {
+            show1.Text = ste1.Value.ToString();
+        }
+        void stepperfun2(object sender, ValueChangedEventArgs e)
+        {
+            show2.Text = ste2.Value.ToString();
+        }
+        void stepperfun3(object sender, ValueChangedEventArgs e)
+        {
+            show3.Text = ste3.Value.ToString();
+        }
+        void btnclick(object sender, EventArgs e)
+        {
+            var num1 = ste1.Value;
+            var num2 = ste2.Value;
+            var num3 = ste3.Value;
+            if (num1 > num2 & num1 > num3)
+            {
+                showres.Text = "first sibling is elder";
+            }
+            else if (num2 > num1 & num2 > num3)
+            {
+                showres.Text = "second sibling is elder";
+            }
+            else if (num3 > num1 & num3 > num2)
+            {
+                showres.Text = "third sibling is elder";
+            }
+            else
+            {
+                showres.Text = "data should not be the same";
+            }
+        }
+    }
+}
