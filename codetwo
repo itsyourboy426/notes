@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="testapp.evaluationtwo">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Airticket Booking System" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
+            <Label Text="Enter source"></Label>
+            <Entry x:Name="source" Placeholder="Source"></Entry>
+            <Label x:Name="show1"></Label>
+            <Label Text="Enter destination"></Label>
+            <Entry x:Name="destination" Placeholder="destination"></Entry>
+            <Label x:Name="show2"></Label>
+            <DatePicker x:Name="dp"  MinimumDate="1995/12/31" MaximumDate="2025/12/31" Format="yyyy/mm/dd"></DatePicker>
+            <Label x:Name="dateshow"></Label>
+            <Label Text="Number of Tickets"></Label>
+            <Stepper x:Name="tcount"  Minimum="0" Maximum="10" ValueChanged="Stepfun"></Stepper>
+            <Label x:Name="ticketcount" Text="1"></Label>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+
+namespace testapp
+{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class evaluationtwo : ContentPage
+    {
+        public evaluationtwo()
+        {
+            InitializeComponent();
+        }
+    }
+    void Stepfun(object sender, ValueChangedEventArgs e)
+    {
+        ticketcount.Text = tcount.Value.ToString();
+    }
+}
