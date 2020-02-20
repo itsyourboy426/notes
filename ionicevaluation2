@@ -1,0 +1,75 @@
+even
+<ion-app>
+  <ion-header>
+    <ion-toolbar color="danger">
+    <ion-title>Calculator</ion-title>
+        </ion-toolbar>
+    </ion-header>
+    <ion-content>
+    <ion-item>
+    <ion-label position=floating>ticket price
+    </ion-label>
+    <ion-input type="number" [(ngModel)]="n1"></ion-input>
+    </ion-item>
+    <ion-item>
+    <ion-label position=floating>no of pass:
+    </ion-label>
+    <ion-input type="number" [(ngModel)]="n2"></ion-input>
+    </ion-item>
+    
+    <ion-item>
+    <ion-label>Result is {{res}}
+    </ion-label>
+     </ion-item>
+
+    <ion-item>
+    <ion-button color="light" (click)="addition()">+</ion-button>
+    <ion-button color="light" (click)="subtract()">-</ion-button>
+    <ion-button color="light" (click)="multiply()">*</ion-button>
+    <ion-button color="light" (click)="divide()">/</ion-button>
+    <ion-button color="light" (click)="isequal()">=</ion-button>
+     </ion-item>
+    
+    
+</ion-content>
+
+
+</ion-app>
+
+
+import { Component } from '@angular/core';
+@Component({
+  selector: 'app-home',
+  templateUrl: 'home.page.html',
+  styleUrls: ['home.page.scss'],
+})
+export class HomePage {
+public n1:any="";
+public n2:any="";
+public res:any="";
+  addition()
+  {
+  this.res=this.n1 + this.n2;
+  }
+  subtract()
+  {
+  this.res=this.n1 - this.n2;
+  }
+  multiply()
+  {
+  this.res=this.n1 * this.n2;
+  }
+  divide()
+  {
+  this.res=this.n1 / this.n2;
+  }
+  isequal()
+  {
+  if(this.n1 == this.n2){
+  this.res="both values are equal";  
+  }
+  else{
+    this.res="both values are not equal";
+  }
+  }
+}
